@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import './app.css';
+import './reset.css';
 // import Navbar from './components/navbar';
 import VideoList from './components/video_list/video_list';
+
 
 function App() {
 
