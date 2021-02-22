@@ -9,27 +9,29 @@ import Sidebar from './components/sidebar/sidebar';
 
 
 
-function App() {
+function App({youtube}) {
 
   const [videos, setVideos] = useState([]);
 
   useEffect(()=>{
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    };
-    
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyC1VMgYAV5t4qY_YAMC0PePdNOKo90CtZI", requestOptions)
-      .then(response => response.json())
-      .then(result => setVideos(result.items))
-      .catch(error => console.log('error', error));
+    youtube
+      .mostPopular()
+      .then(videos => setVideos(videos));
   }, []);
+
+
+
+  const search = (query)=>{
+    youtube
+      .search(query) 
+      .then(videos => setVideos(videos));
+  };
 
   return (
     <>
     <Sidebar />
     <div className={styles.app}>
-      <SearchHeader />
+      <SearchHeader onSearch={search}/>
       <VideoList videos={videos} />
     </div>
     </>
