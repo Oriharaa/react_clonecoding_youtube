@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  height: 80px;
+  padding: 1em 1em;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+  color: #424242;
+  text-decoration: none;
+}
+
+.logo__title {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.input {
+  flex-basis: 100%;
+  font-size: 16px;
+  outline: none;
+}
+
+.button {
+  width: 60px;
+  border: none;
+  background-color: beige;
+  margin-left: 1em;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.button img {
+  height: 100%;
+}

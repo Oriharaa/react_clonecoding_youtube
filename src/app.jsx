@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
-import './app.css';
+
+import styles from './app.module.css';
 import './reset.css';
-// import Navbar from './components/navbar';
+
 import VideoList from './components/video_list/video_list';
+import SearchHeader from './components/searchHeader/searchHeader';
+import Sidebar from './components/sidebar/sidebar';
+
 
 
 function App() {
@@ -23,7 +27,11 @@ function App() {
 
   return (
     <>
-    <VideoList videos={videos} />
+    <Sidebar />
+    <div className={styles.app}>
+      <SearchHeader />
+      <VideoList videos={videos} />
+    </div>
     </>
   );
 }
