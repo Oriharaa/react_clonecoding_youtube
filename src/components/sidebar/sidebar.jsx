@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styles from './sidebar.module.css';
+
 const Sidebar = (props) => {
   return (
-    <ul>
+    <ul className={styles.emsi}>
       <li>
         <a href="#">
           <i className="fas fa-bars"></i>

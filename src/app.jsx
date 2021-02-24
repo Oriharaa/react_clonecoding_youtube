@@ -6,12 +6,15 @@ import './reset.css';
 import VideoList from './components/video_list/video_list';
 import SearchHeader from './components/searchHeader/searchHeader';
 import Sidebar from './components/sidebar/sidebar';
+import VideoDetail from './components/video_detail/video_detail';
 
 
 
 function App({youtube}) {
 
   const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
 
   useEffect(()=>{
     youtube
@@ -22,17 +25,40 @@ function App({youtube}) {
 
 
   const search = (query)=>{
+    setSelectedVideo(null);
     youtube
       .search(query) 
       .then(videos => setVideos(videos));
   };
+
+  const selectVideo = (video)=>{
+    setSelectedVideo(video);
+  };
+
 
   return (
     <>
     <Sidebar />
     <div className={styles.app}>
       <SearchHeader onSearch={search}/>
-      <VideoList videos={videos} />
+
+      <section className={styles.container}>
+
+      {selectedVideo && (
+        <div className={styles.detail}>
+          <VideoDetail video={selectedVideo} />
+        </div>
+      )}
+        <div className={styles.list}>
+          <VideoList 
+            videos={videos} 
+            onVideoClick={selectVideo}
+            display={ selectedVideo ? 'list' : 'grid'} />
+
+        </div>
+      </section>
+
+
     </div>
     </>
   );

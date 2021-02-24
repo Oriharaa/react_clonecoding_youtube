@@ -26,7 +26,7 @@ const SearchHeader = ({onSearch}) => {
     <header className={styles.header}>
       <a href="#" className={styles.logo}>
         <img className={styles.logo__img} src="./images/logo.png" alt="logo" />
-        <h1 className={styles.logo__title}>Premeium</h1>
+        <h1 className={styles.logo__title}>Premium</h1>
       </a>
       <input className={styles.input} ref={inputRef} type="seacrh" onKeyPress={onKeyPress}  placeholder="Search..." />
       <button className={styles.button} type="submit" onClick={onClick}>
